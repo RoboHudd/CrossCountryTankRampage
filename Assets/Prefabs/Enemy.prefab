@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4164914166888320}
   - component: {fileID: 212386369783838034}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: barrelRed_outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,9 @@ GameObject:
   - component: {fileID: 4375460278758876}
   - component: {fileID: 212395874974029270}
   - component: {fileID: 114756116741341728}
-  m_Layer: 10
+  - component: {fileID: 114691143040393654}
+  - component: {fileID: 60973308586407836}
+  m_Layer: 12
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +54,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4524236159298418}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: BarrelPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259600991371064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2, y: 1.19, z: 0}
+  m_LocalPosition: {x: 6.35, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4524236159298418}
@@ -100,6 +102,45 @@ Transform:
   m_Father: {fileID: 4375460278758876}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60973308586407836
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259600991371064}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.83, y: 0.78}
+    newSize: {x: 0.83, y: 0.78}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.415, y: 0.39}
+      - {x: -0.415, y: -0.39}
+      - {x: 0.415, y: -0.39}
+      - {x: 0.415, y: 0.39}
+--- !u!114 &114691143040393654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259600991371064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b6e6b9f91ab064c8872b8ad13ac8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114756116741341728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee711ceec2da274ab30bb50b2539dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  turnSpeed: 0
+  speed: 1
+  turnSpeed: 50
   pathStart: {fileID: 0}
 --- !u!212 &212386369783838034
 SpriteRenderer:
