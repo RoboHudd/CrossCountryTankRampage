@@ -24,6 +24,13 @@ public class BulletBehaviour : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
+
+        HealthScript collider = collision.gameObject.GetComponent<HealthScript>();
+
+        if (collider != null)
+        {
+            collider.Damage(11);
+        }
     }
 
 }

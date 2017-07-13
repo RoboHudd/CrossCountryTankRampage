@@ -43,6 +43,7 @@ public class EnemyMovementScript : MonoBehaviour {
                 break;
             case StateScript.States.Attacking:
                 Debug.Log("ATTACK");
+
                 break;
 
         }

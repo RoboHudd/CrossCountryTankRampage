@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MGSparkScript : MonoBehaviour {
+public class AnimationWaitTimerScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public float waitTimer = 1.0f;
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
 
     void Update()
     {
@@ -16,7 +19,7 @@ public class MGSparkScript : MonoBehaviour {
 
     IEnumerator AnimEnd()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(waitTimer);
         Destroy(gameObject);
     }
 
