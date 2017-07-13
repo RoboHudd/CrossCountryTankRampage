@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySightScript : MonoBehaviour {
 
+
 	// Use this for initialization
 	void Start () {
 		
@@ -14,15 +15,15 @@ public class EnemySightScript : MonoBehaviour {
 		
 	}
 
-    void OnCollisionEnter2D (Collision2D collision)
+    void OnTriggerEnter2D (Collider2D collider)
     {
         EnemyMovementScript moveScript = GetComponent<EnemyMovementScript>();
         Debug.Log("Hit");
         if (moveScript != null)
         {
-            moveScript.speed += 1;
-            moveScript.turnSpeed += 50;
             Debug.Log("Success");
+            GetComponent<StateScript>().ChangeState(StateScript.States.Attacking);
+            
         }
         else
         {

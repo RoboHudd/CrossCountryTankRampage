@@ -34,6 +34,24 @@ public class EnemyMovementScript : MonoBehaviour {
 	void Update () {
         totalTime += Time.unscaledDeltaTime;
 
+        StateScript.States curState = GetComponent<StateScript>().GetState();
+
+        switch (curState)
+        {
+            case StateScript.States.Patrolling:
+                UpdatePatrol();
+                break;
+            case StateScript.States.Attacking:
+                Debug.Log("ATTACK");
+                break;
+
+        }
+
+      
+    }
+
+    void UpdatePatrol()
+    {
         if (facingRightDirection)
         {
 
