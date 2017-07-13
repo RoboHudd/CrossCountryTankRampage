@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ef23964cfbcb54db5ace3dd88cb987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTimer: 1
+  waitTimer: 0.5
 --- !u!212 &212789076643119384
 SpriteRenderer:
   m_ObjectHideFlags: 1

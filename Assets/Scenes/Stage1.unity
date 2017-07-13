@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
+  deathAnim: {fileID: 4135325809055952, guid: 22471696a8a00e84a87d481bfe22b899, type: 2}
 --- !u!61 &31213206
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2575,6 +2576,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1601738618}
   - component: {fileID: 1601738617}
+  - component: {fileID: 1601738619}
   m_Layer: 0
   m_Name: TutorialMap
   m_TagString: Untagged
@@ -2635,6 +2637,23 @@ Transform:
   m_Father: {fileID: 131963406}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1601738619
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601738616}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b4eb8a1a8ce29cf46b79bff876990b81, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1635610414
 GameObject:
   m_ObjectHideFlags: 0
