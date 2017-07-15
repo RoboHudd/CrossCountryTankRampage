@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletBehaviour : MonoBehaviour {
 
     private float bulletSpeed = 20.0f;
+    public Transform explosion;
 
     // Use this for initialization
     void Start () {
@@ -24,6 +25,10 @@ public class BulletBehaviour : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
+
+        var shotTransform = Instantiate(explosion) as Transform;
+        shotTransform.position = transform.position;
+        shotTransform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
         HealthScript collider = collision.gameObject.GetComponent<HealthScript>();
 

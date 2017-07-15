@@ -24,7 +24,7 @@ public class MachineGunScript : MonoBehaviour {
         Random.InitState((int)(Time.unscaledTime * 2000));
         direction.y += Random.Range(-accuracyOffset, accuracyOffset);
         Debug.Log(direction);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 100.0f, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 50.0f, layerMask);
 
         if (hit)
         {

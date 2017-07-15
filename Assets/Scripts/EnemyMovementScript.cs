@@ -23,6 +23,8 @@ public class EnemyMovementScript : MonoBehaviour {
 
     private int nextChild;
 
+    public Transform playerPosition;
+
 	// Use this for initialization
 	void Start () {
         SetUpNewPathTarget(pathStart);
@@ -42,13 +44,30 @@ public class EnemyMovementScript : MonoBehaviour {
                 UpdatePatrol();
                 break;
             case StateScript.States.Attacking:
-                Debug.Log("ATTACK");
+                UpdateAttack();
 
                 break;
 
         }
 
       
+    }
+
+    void UpdateAttack()
+    {
+
+        Vector3 vectorToTarget = playerPosition.position - transform.position;
+        float angle = (Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg) - 90;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, q, Time.deltaTime * turnSpeed);
+
+        float result = Mathf.Abs(transform.rotation.eulerAngles.z) - Mathf.Abs(q.eulerAngles.z);
+        if (Mathf.Abs(result) < 1.0f)
+        {
+            //transform.rotation = Quaternion.Euler(0, 0, targetAngle + 90);
+            totalTime = 0.0f;
+        }
+
     }
 
     void UpdatePatrol()
