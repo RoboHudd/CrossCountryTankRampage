@@ -312,6 +312,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98452a49d51006548a60e366e5f6c58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sights:
+  - {fileID: 4190206921120838}
+  - {fileID: 4762710848615540}
+  - {fileID: 4788940641066072}
+  - {fileID: 4184007154792954}
+  - {fileID: 4482279625729248}
   state: 0
 --- !u!114 &114755016458614954
 MonoBehaviour:
@@ -375,6 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 30
   deathAnim: {fileID: 4135325809055952, guid: 22471696a8a00e84a87d481bfe22b899, type: 2}
+  deathAnimScale: {x: 1, y: 1, z: 1}
 --- !u!212 &212278146472878464
 SpriteRenderer:
   m_ObjectHideFlags: 1

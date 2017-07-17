@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: e38d737bd0da9044da231e226fbae7e2
-timeCreated: 1499963414
+timeCreated: 1500313369
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - deathAnim: {fileID: 4135325809055952, guid: 22471696a8a00e84a87d481bfe22b899,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

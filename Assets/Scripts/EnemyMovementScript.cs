@@ -32,6 +32,11 @@ public class EnemyMovementScript : MonoBehaviour {
         facingRightDirection = true;
     }
 	
+    public void RedoPathPoint()
+    {
+        SetUpNewPathTarget(currentPathPoint);
+    }
+
 	// Update is called once per frame
 	void Update () {
         totalTime += Time.unscaledDeltaTime;
@@ -41,13 +46,20 @@ public class EnemyMovementScript : MonoBehaviour {
         switch (curState)
         {
             case StateScript.States.Patrolling:
+                Debug.Log("PATROLLING");
                 UpdatePatrol();
                 break;
             case StateScript.States.Attacking:
+                Debug.Log("ATTACKING");
                 UpdateAttack();
-
                 break;
-
+            case StateScript.States.Watching:
+                Debug.Log("WATCHING");
+                break;
+            case StateScript.States.AlertPatrol:
+                Debug.Log("ALERT PATROLLING");
+                UpdatePatrol();
+                break;
         }
 
       

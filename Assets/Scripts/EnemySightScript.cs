@@ -5,9 +5,12 @@ using UnityEngine;
 public class EnemySightScript : MonoBehaviour {
 
     public LayerMask layerMask;
-
     public Transform sight1, sight2, sight3, sight4, sight5;
 
+    private float timeElapsed;
+    private bool targetInSight;
+    public const float timeToStop = 2.5f;
+    public const float timeToForget = 10.0f;
 	// Use this for initialization
 	void Start () {
 		
@@ -15,6 +18,28 @@ public class EnemySightScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!targetInSight && GetComponentInParent<StateScript>().GetState() == StateScript.States.Attacking)
+        {
+            timeElapsed += Time.unscaledDeltaTime;
+            if (timeElapsed >= timeToStop)
+            {
+                timeElapsed = 0.0f;
+                GetComponentInParent<StateScript>().ChangeState(StateScript.States.Watching);
+            }
+
+        }
+        else if (!targetInSight && GetComponentInParent<StateScript>().GetState() == StateScript.States.Watching)
+        {
+            timeElapsed += Time.unscaledDeltaTime;
+            if (timeElapsed >= timeToForget)
+            {
+                timeElapsed = 0.0f;
+                GetComponentInParent<StateScript>().ChangeState(StateScript.States.AlertPatrol);
+            }
+
+        }
+        targetInSight = false;
+
         RaycastHit2D hit1 = Physics2D.Linecast(transform.position, sight1.position, layerMask);
         RaycastHit2D hit2 = Physics2D.Linecast(transform.position, sight2.position, layerMask);
         RaycastHit2D hit3 = Physics2D.Linecast(transform.position, sight3.position, layerMask);
@@ -32,6 +57,7 @@ public class EnemySightScript : MonoBehaviour {
                 {
                    
                     GetComponentInParent<StateScript>().ChangeState(StateScript.States.Attacking);
+                    targetInSight = true;
                     break;
                 }
             }

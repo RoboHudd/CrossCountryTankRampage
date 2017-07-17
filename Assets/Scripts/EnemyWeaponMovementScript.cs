@@ -12,9 +12,15 @@ public class EnemyWeaponMovementScript : MonoBehaviour {
     private float totalTime;
     private float cReloadTime = 3.0f;
 
+    private float watchOffset;
+    private float alertOffset;
+
+
 	// Use this for initialization
 	void Start () {
         totalTime = 0.0f;
+        watchOffset = 20.0f;
+        alertOffset = 10.0f;
 	}
 	
 	// Update is called once per frame
@@ -23,7 +29,7 @@ public class EnemyWeaponMovementScript : MonoBehaviour {
         switch (GetComponentInParent<StateScript>().GetState())
         {
             case StateScript.States.Patrolling:
-
+               
                 break;
             case StateScript.States.Attacking:
                 totalTime += Time.unscaledDeltaTime;
@@ -32,14 +38,12 @@ public class EnemyWeaponMovementScript : MonoBehaviour {
                 Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, q, Time.deltaTime * turnSpeed);
 
-                float result = Mathf.Abs(transform.rotation.eulerAngles.z) - Mathf.Abs(q.eulerAngles.z);
-                if (Mathf.Abs(result) < 1.0f && totalTime >= cReloadTime)
+                if (AreAnglesClose(transform.localRotation.eulerAngles.z, q.eulerAngles.z) && totalTime >= cReloadTime)
                 {
                     //transform.rotation = Quaternion.Euler(0, 0, targetAngle + 90);
                     //totalTime = 0.0f;
                     // Create a new shot
                     var shotTransform = Instantiate(shotPrefab) as Transform;
-
 
                     // Assign position, rotation etc
                     Random.InitState((int)(Time.unscaledTime * 1000));
@@ -51,9 +55,41 @@ public class EnemyWeaponMovementScript : MonoBehaviour {
 
                 break;
             case StateScript.States.AlertPatrol:
+                Quaternion qe = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, alertOffset);
+                transform.localRotation = Quaternion.RotateTowards(transform.localRotation, qe, Time.deltaTime * turnSpeed / 5.0f);
 
+
+                if (AreAnglesClose(transform.localRotation.eulerAngles.z, qe.eulerAngles.z))
+                {
+                    //transform.rotation = Quaternion.Euler(0, 0, targetAngle + 90);
+                    watchOffset = -watchOffset;
+                    totalTime = 0.0f;
+                }
+                break;
+            case StateScript.States.Watching:
+                Quaternion qu = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, watchOffset);
+                transform.localRotation = Quaternion.RotateTowards(transform.localRotation, qu, Time.deltaTime * turnSpeed / 5.0f);
+
+                if (AreAnglesClose(transform.localRotation.eulerAngles.z, qu.eulerAngles.z))
+                {
+                    //transform.rotation = Quaternion.Euler(0, 0, targetAngle + 90);
+                    watchOffset = -watchOffset;
+                    totalTime = 0.0f;
+                }
                 break;
         }
 
+
+
 	}
+
+    bool AreAnglesClose(float angle1, float angle2)
+    {
+        float result1 = Mathf.Abs(angle1) - Mathf.Abs(angle2);
+        if (Mathf.Abs(result1) < 1.0f)
+        {
+            return true;
+        }
+        return false;
+    }
 }

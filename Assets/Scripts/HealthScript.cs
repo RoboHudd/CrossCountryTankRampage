@@ -6,6 +6,7 @@ public class HealthScript : MonoBehaviour {
 
     public float health;
     public Transform deathAnim;
+    public Vector3 deathAnimScale;
 
     // Use this for initialization
     void Start () {
@@ -25,6 +26,7 @@ public class HealthScript : MonoBehaviour {
         {
             var shotTransform = Instantiate(deathAnim) as Transform;
             shotTransform.position = transform.position;
+            shotTransform.localScale = deathAnimScale;
             Destroy(gameObject);
         }
     }

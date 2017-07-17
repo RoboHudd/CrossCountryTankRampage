@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private Rigidbody2D rigidbodyComponent;
 
-    private Vector2 speed = new Vector2(10,10);
+    public float speed;
 
     private float inputX;
     private float inputY;
@@ -43,11 +43,11 @@ public class PlayerMovement : MonoBehaviour {
 
         if (inputY > 0)
         {
-            transform.Translate(transform.up.normalized * Time.deltaTime, Space.World);
+            transform.Translate(transform.up.normalized * Time.deltaTime * speed, Space.World);
         }
         else if (inputY < 0)
         {
-            transform.Translate(transform.up.normalized * Time.deltaTime * -1, Space.World);
+            transform.Translate(transform.up.normalized * Time.deltaTime * -speed, Space.World);
         }
 
     }

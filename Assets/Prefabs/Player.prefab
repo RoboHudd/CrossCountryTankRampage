@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa85ad923644ec4591e9c349cc8bff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1.5
 --- !u!114 &114522090376537448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,6 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa2592a5273530448c6478dd7890820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetReticle: {fileID: 0}
+  turnSpeed: 0
 --- !u!114 &114603037512946368
 MonoBehaviour:
   m_ObjectHideFlags: 1

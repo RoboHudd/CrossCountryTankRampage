@@ -29,19 +29,22 @@ public class MachineGunScript : MonoBehaviour {
         if (hit)
         {
             BuildingCollision shot = hit.collider.GetComponent<BuildingCollision>();
+            HealthScript obstShot = hit.collider.GetComponent<HealthScript>();
 
-            Debug.Log("T Hit");
             if (shot != null)
             {
                 shot.Damage(2);
-                Debug.Log("M Hit");
 
+                var shotTransform = Instantiate(mgShotPrefab) as Transform;
+                shotTransform.position = hit.point;             
+                
+            }
+            else if (obstShot != null)
+            {
+                obstShot.Damage(2);
 
                 var shotTransform = Instantiate(mgShotPrefab) as Transform;
                 shotTransform.position = hit.point;
-                
-                
-                
             }
         }
     }
