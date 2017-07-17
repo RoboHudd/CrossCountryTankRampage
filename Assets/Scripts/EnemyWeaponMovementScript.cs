@@ -38,7 +38,7 @@ public class EnemyWeaponMovementScript : MonoBehaviour {
                 Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, q, Time.deltaTime * turnSpeed);
 
-                if (AreAnglesClose(transform.localRotation.eulerAngles.z, q.eulerAngles.z) && totalTime >= cReloadTime)
+                if (AreAnglesClose(transform.rotation.eulerAngles.z, q.eulerAngles.z) && totalTime >= cReloadTime)
                 {
                     //transform.rotation = Quaternion.Euler(0, 0, targetAngle + 90);
                     //totalTime = 0.0f;
@@ -62,7 +62,7 @@ public class EnemyWeaponMovementScript : MonoBehaviour {
                 if (AreAnglesClose(transform.localRotation.eulerAngles.z, qe.eulerAngles.z))
                 {
                     //transform.rotation = Quaternion.Euler(0, 0, targetAngle + 90);
-                    watchOffset = -watchOffset;
+                    alertOffset = -alertOffset;
                     totalTime = 0.0f;
                 }
                 break;
